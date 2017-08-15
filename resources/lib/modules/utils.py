@@ -26,11 +26,13 @@ def parse_query(query):
             q[key] = queries[key]
     return q
     
-def buildDir(items, content='dirs', cm=[], search=False, stopend=False, isVideo = False, isDownloadable = False, cache=True, chaturbate=False, pictures=False):
+def buildDir(items, content='dirs', cm=None, search=False, stopend=False, isVideo = False, isDownloadable = False, cache=True, chaturbate=False, pictures=False):
 
     if items == None or len(items) == 0:
         xbmc.executebuiltin('Dialog.Close(busydialog)')
         sys.exit()
+        
+    if cm is None: cm = []
 
     sysaddon = sys.argv[0]
     syshandle = int(sys.argv[1])
@@ -50,7 +52,6 @@ def buildDir(items, content='dirs', cm=[], search=False, stopend=False, isVideo 
     for i in items:
     
         try:
-            
             name = i['name']
             
             if 'file_path' not in name:
