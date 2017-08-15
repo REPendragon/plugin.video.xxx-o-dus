@@ -1,3 +1,8 @@
+Version: 3.00.027
+
+--- Fix CM issue with search (Thanks to UWC Dev for fix)
+--- Added Kodi Ver, Build, Lang and Python Version to Debug menu.
+
 -----------------------------------------
 Version: 3.00.026
 

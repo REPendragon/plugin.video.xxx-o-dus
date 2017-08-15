@@ -213,6 +213,15 @@ def buildDir(items, content='dirs', cm=None, search=False, stopend=False, isVide
 @url_dispatcher.register('45')
 def depVersions():
     
+    try: xbmc_version=xbmc.getInfoLabel("System.BuildVersion").split(' ')[0]
+    except: 'Unknown'
+    try: xbmc_builddate=xbmc.getInfoLabel('System.BuildDate')
+    except: 'Unknown'
+    try: xbmc_language=xbmc.getInfoLabel('System.Language')
+    except: 'Unknown'
+    try: python_version = sys.version.split(' ')[0]
+    except: 'Unknown'
+
     try:
         xml1 = client.request('https://raw.githubusercontent.com/Colossal1/repository.colossus/master/addons.xml')
         xml2 = client.request('https://raw.githubusercontent.com/Colossal1/repository.colossus.common/master/addons.xml')
@@ -220,6 +229,11 @@ def depVersions():
                ('script.module.echo'),('script.module.urlresolver'),('script.module.urlresolver.xxx')]
 
         c = []
+        c += [(kodi.giveColor('Kodi Version: ','white',True) + kodi.giveColor(xbmc_version,'pink'), kodi.addonicon, kodi.addonfanart, xbmc_version)]
+        c += [(kodi.giveColor('Python Version: ','white',True) + kodi.giveColor(python_version,'pink'), kodi.addonicon, kodi.addonfanart, python_version)]
+        c += [(kodi.giveColor('Kodi Build Date: ','white',True) + kodi.giveColor(xbmc_builddate,'pink'), kodi.addonicon, kodi.addonfanart, xbmc_builddate)]
+        c += [(kodi.giveColor('Kodi Language: ','white',True) + kodi.giveColor(xbmc_language,'pink'), kodi.addonicon, kodi.addonfanart, xbmc_language)]
+
         for i in lst:
             addon_name = xbmcaddon.Addon('%s' % i).getAddonInfo('name')
             addon_id = xbmcaddon.Addon('%s' % i).getAddonInfo('id')
@@ -243,7 +257,7 @@ def depVersions():
         dirlst = []
         
         for e in c:
-            dirlst.append({'name': kodi.giveColor(e[0],'white'), 'url': None, 'mode': 999, 'icon': e[1], 'fanart': e[2], 'description': e[3], 'folder': False})
+            dirlst.append({'name': kodi.giveColor(e[0],'white'), 'url': 'None', 'mode': 999, 'icon': e[1], 'fanart': e[2], 'description': e[3], 'folder': False})
 
         buildDir(dirlst)
     except:
