@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.xxx-o-dus" 
 	     name="XXX-O-DUS" 
-	     version="3.00.027" 
+	     version="3.00.028" 
 	     provider-name="Echo Coder">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -28,8 +28,8 @@
     <language></language>
     <platform>all</platform>
     <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
-    <website>https://github.com/xibalba10/</website>
-    <forum>https://github.com/xibalba10/</forum>
+    <website>https://github.com/echocoderxbmc/plugin.video.xxx-o-dus</website>
+    <forum>https://github.com/echocoderxbmc/plugin.video.xxx-o-dus</forum>
     <assets>
         <icon>icon.png</icon>
         <fanart>fanart.jpg</fanart>

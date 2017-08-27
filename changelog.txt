@@ -1,3 +1,8 @@
+Version: 3.00.028
+
+--- Fix issue with history.
+
+-----------------------------------------
 Version: 3.00.027
 
 --- Fix CM issue with search (Thanks to UWC Dev for fix)

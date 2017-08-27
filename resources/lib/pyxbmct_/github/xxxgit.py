@@ -47,13 +47,22 @@ def githubSelect(name):
     else:
         msg_text = kodi.giveColor('%s Issues with XXX-O-DUS\n' % name.title(),'deeppink',True) + kodi.giveColor('Report Issues @ https://github.com/xibalba10/plugin.video.xxx-o-dus/issues','white',True) + '\n---------------------------------\n\n'
         for item in items:
-            id = re.findall('<id>([^<]+)', item)[0]
-            user = re.findall('<username>([^<]+)', item)[0]
-            label = re.findall('<label>([^<]+)', item)[0]
-            title = re.findall('<title>([^<]+)', item)[0]
-            body = re.findall('<body>([^<]+)', item)[0]
-            created = re.findall('<created>([^<]+)', item)[0]
-            date,time = created.split('T')
+            try: id = re.findall('<id>([^<]+)', item)[0]
+            except: id = 'Unknown'
+            try: user = re.findall('<username>([^<]+)', item)[0]
+            except: user = 'Unknown'
+            try: label = re.findall('<label>([^<]+)', item)[0]
+            except: label = 'Unknown'
+            try: title = re.findall('<title>([^<]+)', item)[0]
+            except: title = 'Unknown'
+            try: body = re.findall('<body>([^<]+)', item)[0]
+            except: body = 'Unknown'
+            try: 
+                created = re.findall('<created>([^<]+)', item)[0]
+                date,time = created.split('T')
+            except:
+                date = 'Unknown'
+                time = 'Unknwon'
             msg_text += '[B]ID: %s | Label: %s \nBy: %s on %s at %s[/B] \n\nTitle: %s \nMessage %s \n\n---------------------------------\n\n' \
                          % (id, \
                             kodi.githubLabel(label), \

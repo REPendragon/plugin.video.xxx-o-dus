@@ -16,11 +16,18 @@ if xbmcvfs.exists(xxx_plugins_path): urlresolver.add_plugin_dirs(xbmc.translateP
 def resolve_url(url, name=None, iconimage=None, pattern=None):
 
     kodi.busy()
+    
     try: url,site = url.split('|SPLIT|')
     except: 
         site = 'Unknown'
         log_utils.log('Error getting site information from :: %s' % (url), log_utils.LOGERROR)
     
+    if not name: name = 'Unknown'
+    if not iconimage: iconimage = kodi.addonicon
+    name = re.sub(r'(\[.+?\])','',name); name = name.lstrip()
+    if '] - ' in name: name = name.split('] - ')[-1] 
+    if 'site=' in url: url,site = url.split('site=')
+
     if '|CHAT|' in url: 
         url,site,name = url.split('|CHAT|')
     if '- [' in name: 
@@ -99,12 +106,12 @@ def play(url, name, iconimage=None, ref=None, site=None):
                 else: site = 'Unknown'
             except: site = site.title()
             
-            if chatur:
-                history.delEntry(ref)
-                history.addHistory(name, ref, site.title(), iconimage)
-            else:
-                history.delEntry(url)
-                history.addHistory(name, url, site.title(), iconimage)
+            #if chatur:
+            history.delEntry(ref)
+            history.addHistory(name, ref, site.title(), iconimage)
+            #else:
+            #    history.delEntry(url)
+            #    history.addHistory(name, url, site.title(), iconimage)
                 
         kodi.idle()
 
