@@ -35,7 +35,7 @@ Closed_Seleted  = os.path.join(ART, 'numbers/selected/closed/%s.png')
 
 def githubSelect(name):
     import githubissues
-    githubissues.run('echocoderxbmc/plugin.video.xxx-o-dus', '%s' % name)
+    githubissues.run('Colossal1/plugin.video.xxx-o-dus', '%s' % name)
     file = xbmc.translatePath(os.path.join(kodi.datafolder, '%s-issues-%s.csv' % (kodi.get_id(),name)))
     
     global msg_text
@@ -45,7 +45,7 @@ def githubSelect(name):
     if len(items) < 1:
         msg_text = kodi.giveColor('No %s issues with XXX-O-DUS at this time.' % name.title(),'deeppink',True)
     else:
-        msg_text = kodi.giveColor('%s Issues with XXX-O-DUS\n' % name.title(),'deeppink',True) + kodi.giveColor('Report Issues @ https://github.com/xibalba10/plugin.video.xxx-o-dus/issues','white',True) + '\n---------------------------------\n\n'
+        msg_text = kodi.giveColor('%s Issues with XXX-O-DUS\n' % name.title(),'deeppink',True) + kodi.giveColor('Report Issues @ https://github.com/Colossal1/plugin.video.xxx-o-dus/issues','white',True) + '\n---------------------------------\n\n'
         for item in items:
             try: id = re.findall('<id>([^<]+)', item)[0]
             except: id = 'Unknown'

@@ -1,3 +1,8 @@
+Version: 3.00.029
+
+--- Change GitHub Issues location to Colossal.
+
+-----------------------------------------
 Version: 3.00.028
 
 --- Fix issue with history.
